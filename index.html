@@ -9,7 +9,7 @@
 <style type="text/css">
 Html,
 body {
-    font: 40px '微软雅黑';
+    font-family:'微软雅黑';
     color: #666666;
     background: #ffffff;
 }
@@ -38,15 +38,6 @@ table {
     border-collapse: collapse;
 }
 
-hr {
-    clear: both;
-    border-width: 0;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #FFF;
-    height: 2px;
-    overflow: hidden;
-}
-
 .cl {
     *zoom: 1;
 }
@@ -73,6 +64,7 @@ body {
     -webkit-box-pack: center;
     -webkit-box-align: center;
     text-align: center;
+    //opacity: .6
 }
 
 .middleCn {
@@ -82,6 +74,7 @@ body {
     color: #ffffff;
     letter-spacing: .04rem;
     border-radius: .2rem;
+    border: 1px solid #666666;
 }
 
 .middleCn dt {
@@ -92,7 +85,7 @@ body {
 .middleCn a {
     display: block;
     color: #ffffff;
-    line-height: 1.8;
+    line-height: 2;
     font-size: .28rem;
     text-align: left;
     background: rgba(0, 0, 0, .5);
@@ -102,14 +95,56 @@ body {
 }
 
 .middleCn dd {
+	transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    animation: rotate 4s infinite;
+    -webkit-animation: rotate 4s infinite;
     font-size: .24rem;
     white-space: nowrap;
     padding-top: .3rem;
 }
+
+@-moz-keyframes rotate{
+	0%{
+	  -moz-transform:rotateY(0deg);
+	 }
+	 100%{
+	   -moz-transform:rotateY(360deg);
+	 }
+}
+@-webkit-keyframes rotate{
+	0%{
+	  -webkit-transform:rotateY(0deg);
+	 }
+	 100%{
+	   -webkit-transform:rotateY(360deg);
+	 }
+}
+@keyframes rotate{
+	0%{
+	  transform:rotateY(0deg);
+	 }
+	 100%{
+	   transform:rotateY(360deg);
+	 }
+}
+
+body {}
 </style>
 <script>
-if(window.innerWidth <= 750) {
-	document.documentElement.style.fontSize = window.innerWidth / 7.5 + 'px'
+const setFontSize = function() {
+    if (window.innerWidth <= 750) {
+        document.documentElement.style.fontSize = window.innerWidth / 7.5 + 'px'
+    }
+}
+const color = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+setFontSize()
+setInterval(function() {
+    const index = Math.floor((Math.random() * color.length))
+    document.body.style.backgroundColor = color[index]
+}, 4000)
+window.onresize = function() {
+    setFontSize()
 }
 </script>
 
@@ -118,7 +153,7 @@ if(window.innerWidth <= 750) {
         <dt>王峰的个人网站</dt>
         <a href='https://github.com/islittle/Web-Developer'>1.前端基础仓库</a>
         <a href='https://github.com/islittle/reactjs'>2.reactjs仓库</a>
-        <dd>本人邮箱：islittle@outlook.com</dd>
+        <dd>邮箱：islittle@outlook.com</dd>
     </dl>
 </body>
 
